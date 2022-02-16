@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Service
 public class UsuarioService {
@@ -22,6 +23,27 @@ public class UsuarioService {
     //Metodo para guardar un usuario
     public UsuarioModel saveUsuario(UsuarioModel usuario) {
         return usuarioRepository.save(usuario);
+    }
+
+    //Se coloca Optional por si no se encuentra el id
+    public Optional<UsuarioModel> getById(Long id) {
+        return usuarioRepository.findById(id);
+    }
+
+    //Busca los usuarios segun su prioridad
+    public ArrayList<UsuarioModel> getByPrioridad(Integer prioridad) {
+        return usuarioRepository.findByPrioridad(prioridad);
+    }
+
+    //Elimina el usuario por id
+    public boolean deleteUsuario(Long id) {
+        try {
+            usuarioRepository.deleteById(id);
+            return true;
+        } catch (Exception e) {
+            //Si el metodo falla retornar falso
+            return false;
+        }
     }
 
 
