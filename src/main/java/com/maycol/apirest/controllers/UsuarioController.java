@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -53,5 +54,19 @@ public class UsuarioController {
     @GetMapping("/name")
     public ArrayList<UsuarioModel> getByNombre(@RequestParam("nombre") String nombre) {
         return this.usuarioService.getByNombre(nombre);
+    }
+    /*@GetMapping("/sorted")
+    public List<UsuarioModel> getAllSorted() {
+        return this.usuarioService.getAllSortByNombre();
+    }*/
+
+    @GetMapping("/mayor-edad")
+    public List<UsuarioModel> getAgeOver18() {
+        return this.usuarioService.getAgeOver18();
+    }
+
+    @GetMapping("/menor-edad")
+    public List<UsuarioModel> getAgeDown18() {
+        return this.usuarioService.getAgeDown18();
     }
 }

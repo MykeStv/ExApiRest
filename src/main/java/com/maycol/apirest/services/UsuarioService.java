@@ -3,10 +3,13 @@ package com.maycol.apirest.services;
 import com.maycol.apirest.models.UsuarioModel;
 import com.maycol.apirest.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UsuarioService {
@@ -47,9 +50,16 @@ public class UsuarioService {
     }
 
     //Obtiene a los usuarios mayores de edad
-    /*public ArrayList<UsuarioModel> getAgeOver18() {
-        return
-    }*/
+    public List<UsuarioModel> getAgeOver18() {
+        ArrayList<UsuarioModel> usuarios = this.getUsuarios();
+        return usuarios.stream().filter(user -> user.getEdad() >= 18).collect(Collectors.toList());
+    }
+    //Obtener usuario menores de edad
+    public List<UsuarioModel> getAgeDown18() {
+        ArrayList<UsuarioModel> usuarios = this.getUsuarios();
+        return usuarios.stream().filter(user -> user.getEdad() < 18).collect(Collectors.toList());
+    }
+
 
     //Obtiene a los usuarios por el nombre
     public ArrayList<UsuarioModel> getByNombre(String nombre){
