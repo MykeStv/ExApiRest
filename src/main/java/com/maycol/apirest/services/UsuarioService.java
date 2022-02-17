@@ -46,5 +46,14 @@ public class UsuarioService {
         }
     }
 
+    //Obtiene a los usuarios mayores de edad
+    /*public ArrayList<UsuarioModel> getAgeOver18() {
+        return
+    }*/
+
+    //Obtiene a los usuarios por el nombre
+    public ArrayList<UsuarioModel> getByNombre(String nombre){
+        return this.usuarioRepository.findByNombre(nombre);
+    }
 
 }

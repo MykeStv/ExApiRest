@@ -10,5 +10,5 @@ import java.util.ArrayList;
 //extiende de la clase CrudRepository <modelo, tipo de dato del identificado>
 public interface UsuarioRepository extends CrudRepository<UsuarioModel, Long> {
     public abstract ArrayList<UsuarioModel> findByPrioridad(Integer prioridad);
-
+    public abstract ArrayList<UsuarioModel> findByNombre(String nombre);
 }

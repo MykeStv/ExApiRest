@@ -15,6 +15,7 @@ public class UsuarioModel {
     private String nombre;
     private String email;
     private Integer prioridad;
+    private Integer edad;
 
 
     //GETTER && SETTER
@@ -48,5 +49,13 @@ public class UsuarioModel {
 
     public void setPrioridad(Integer prioridad) {
         this.prioridad = prioridad;
+    }
+
+    public Integer getEdad() {
+        return edad;
+    }
+
+    public void setEdad(Integer edad) {
+        this.edad = edad;
     }
 }

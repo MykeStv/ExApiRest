@@ -6,7 +6,6 @@ import com.maycol.apirest.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -50,4 +49,9 @@ public class UsuarioController {
         }
     }
 
+    //Obtiene los usuarios por el nombre
+    @GetMapping("/name")
+    public ArrayList<UsuarioModel> getByNombre(@RequestParam("nombre") String nombre) {
+        return this.usuarioService.getByNombre(nombre);
+    }
 }
